@@ -1,0 +1,24 @@
+[package]
+name = "stm32l1-blinky"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.7.6"
+cortex-m-rt = "^0.6.15"
+stm32l1xx-hal = "0.1.0"
+embedded-hal = "0.2.7"
+
+[profile.release]
+codegen-units = 1
+debug = true
+lto = true
+
+[dev-dependencies]
+cargo-run-script = "0.1.0"
+
+[package.metadata.scripts]
+openocd = "openocd -s C:\\OpenOCD\\share\\scripts -f interface\\stlink.cfg -f target\\stm32l1.cfg"
+# gdb = "arm-none-eabi-gdb -q -ex \"target extended-remote :3333\" .\\target\\thumbv7m-none-eabi\\debug\\stm32l1-blinky"
